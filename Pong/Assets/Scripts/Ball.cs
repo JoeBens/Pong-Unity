@@ -16,7 +16,14 @@ public class Ball : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        direction = Vector2.one.normalized;
+        Time.timeScale = 1;
+        int i = Random.Range(0, 1);
+
+        if(i == 0)
+            direction = Vector2.one.normalized;
+        else
+            direction = -Vector2.one.normalized;
+
         radius = transform.localScale.x / 2;
         GetComponent<SpriteRenderer>().color = Color.yellow;
     }
@@ -58,6 +65,7 @@ public class Ball : MonoBehaviour {
         {
             bool isRight = collision.GetComponent<Actor>().isRight;
 
+            speed += 2;
 
             //if hitting right paddle then go left
             if(isRight == true && direction.x > 0)

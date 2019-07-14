@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        Time.timeScale = 1;
 
         //Convert screen's pixel coordinate into game's coordinate
         bottomLeft = Camera.main.ScreenToWorldPoint(new Vector2(0, 0));

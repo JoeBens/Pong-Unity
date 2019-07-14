@@ -23,6 +23,9 @@ public class Actor : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        Time.timeScale = 1;
+
         height = transform.localScale.y;
 
         ball = FindObjectOfType<Ball>();
@@ -72,26 +75,20 @@ public class Actor : MonoBehaviour {
 
         if (isRight)
         {
-            float move = Input.GetAxis(input) * Time.deltaTime * speedPlayer;
+            /*float move = Input.GetAxis(input) * Time.deltaTime * speedPlayer;
             if (transform.position.y < GameManager.bottomLeft.y + height / 2 && move < 0)
                 move = 0;
 
             if (transform.position.y > GameManager.topRight.y - height / 2 && move > 0)
                 move = 0;
 
-            transform.Translate(move * Vector2.up);
+            transform.Translate(move * Vector2.up);*/
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, ball.transform.position.y), speedPlayer * Time.deltaTime);
         }
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, ball.transform.position.y), speedEnemy * Time.deltaTime);
         }
-        
-
-    
-
-
-
-        
-		
+   	
 	}
 }
